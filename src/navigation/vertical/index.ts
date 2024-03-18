@@ -1,12 +1,17 @@
 export default [
   {
-    title: 'Home',
-    to: { name: 'root' },
-    icon: { icon: 'tabler-smart-home' },
+    title: 'trainees',
+    to: { name: 'trainer-trainees' },
+    icon: { icon: 'tabler-barbell' },
   },
   {
-    title: 'Second page',
-    to: { name: 'second-page' },
-    icon: { icon: 'tabler-file' },
+    title: 'requests',
+    to: { name: 'trainer-requests' },
+    icon: { icon: 'tabler-user-question' },
+  },
+  {
+    title: 'chat',
+    to: { name: 'chat' },
+    icon: { icon: 'tabler-message' },
   },
 ]
