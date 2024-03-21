@@ -42,12 +42,13 @@ watch([isFallbackStateActive, refLoadingIndicator], () => {
           />
         </IconBtn>
 
-        <NavbarThemeSwitcher />
+        <!-- <NavbarThemeSwitcher /> -->
 
         <VSpacer />
 
         <NavBarI18n
           v-if="themeConfig.app.i18n.enable && themeConfig.app.i18n.langConfig?.length"
+          class="me-4"
           :languages="themeConfig.app.i18n.langConfig"
         />
         <UserProfile />
