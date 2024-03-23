@@ -10,5 +10,13 @@
   "coach-experience": "Coach Experience",
   "active": "Active",
   "edit": "Edit",
-  "report": "Report"
+  "report": "Report",
+  "pending": "Pending",
+  "approved": "Approved",
+  "rejected": "Rejected",
+  "approve": "Approve",
+  "reject": "Reject",
+  "set-payment": "Set Payment",
+  "trainee-info": "Trainee Info",
+  "program": "Program"
 }
