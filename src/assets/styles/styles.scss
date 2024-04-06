@@ -1,1 +1,11 @@
 // Write your overrides
+
+.gradient-active {
+  background: linear-gradient(72.47deg, rgb(var(--v-global-theme-primary)) 22.16%, rgba(var(--v-global-theme-primary), 0.7) 76.47%) !important;
+  box-shadow: 0 2px 6px rgba(var(--v-global-theme-primary), 0.48);
+  font-weight: 500;
+}
+
+.rounded-pill-input {
+  .v-
+}
