@@ -9,17 +9,12 @@ import authV2MaskDark from '@images/pages/misc-mask-dark.png'
 import authV2MaskLight from '@images/pages/misc-mask-light.png'
 import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
 import { themeConfig } from '@themeConfig'
+import { useLoginForm } from '@/stores/forms/login-form'
 
 definePage({
   meta: {
     layout: 'blank',
   },
-})
-
-const form = ref({
-  email: '',
-  password: '',
-  remember: false,
 })
 
 const isPasswordVisible = ref(false)
@@ -32,6 +27,10 @@ const authThemeImg = useGenerateImageVariant(
   true)
 
 const authThemeMask = useGenerateImageVariant(authV2MaskLight, authV2MaskDark)
+
+const loginForm = useLoginForm()
+const { form, loading } = storeToRefs(loginForm)
+const { submit } = loginForm
 </script>
 
 <template>
@@ -82,7 +81,7 @@ const authThemeMask = useGenerateImageVariant(authV2MaskLight, authV2MaskDark)
           </p>
         </VCardText>
         <VCardText>
-          <VForm @submit.prevent="() => { }">
+          <VForm @submit.prevent="() => { submit() }">
             <VRow>
               <!-- email -->
               <VCol cols="12">

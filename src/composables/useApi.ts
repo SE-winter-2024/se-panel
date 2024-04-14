@@ -4,6 +4,7 @@ import { destr } from 'destr'
 export const useApi = createFetch({
   baseUrl: import.meta.env.VITE_API_BASE_URL || '/api',
   fetchOptions: {
+    mode: 'cors',
     headers: {
       Accept: 'application/json',
     },
@@ -11,7 +12,7 @@ export const useApi = createFetch({
   options: {
     refetch: true,
     async beforeFetch({ options }) {
-      const accessToken = useCookie('accessToken').value
+      const accessToken = localStorage.getItem('access-token')
 
       if (accessToken) {
         options.headers = {
