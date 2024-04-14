@@ -45,6 +45,9 @@ declare module 'vue-router/auto/routes' {
     'login': RouteRecordInfo<'login', '/login', Record<never, never>, Record<never, never>>,
     'profile-id': RouteRecordInfo<'profile-id', '/profile/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     'second-page': RouteRecordInfo<'second-page', '/second-page', Record<never, never>, Record<never, never>>,
+    'trainee-history': RouteRecordInfo<'trainee-history', '/trainee/history', Record<never, never>, Record<never, never>>,
+    'trainee-my-plans': RouteRecordInfo<'trainee-my-plans', '/trainee/my-plans', Record<never, never>, Record<never, never>>,
+    'trainee-trainers': RouteRecordInfo<'trainee-trainers', '/trainee/trainers', Record<never, never>, Record<never, never>>,
     'trainer-requests': RouteRecordInfo<'trainer-requests', '/trainer/requests', Record<never, never>, Record<never, never>>,
     'trainer-trainees': RouteRecordInfo<'trainer-trainees', '/trainer/trainees', Record<never, never>, Record<never, never>>,
   }
