@@ -8,7 +8,7 @@ import authV2MaskDark from '@images/pages/misc-mask-dark.png'
 import authV2MaskLight from '@images/pages/misc-mask-light.png'
 import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
 import { themeConfig } from '@themeConfig'
-import { useLoginForm } from '@/stores/forms/login-form'
+import { useSignUpForm } from '@/stores/forms/sign-up-form'
 
 definePage({
   meta: {
@@ -27,9 +27,9 @@ const authThemeImg = useGenerateImageVariant(
 
 const authThemeMask = useGenerateImageVariant(authV2MaskLight, authV2MaskDark)
 
-const loginForm = useLoginForm()
-const { form, loading } = storeToRefs(loginForm)
-const { submit } = loginForm
+const signUpForm = useSignUpForm()
+const { form, loading } = storeToRefs(signUpForm)
+const { submit } = signUpForm
 </script>
 
 <template>
@@ -82,22 +82,69 @@ const { submit } = loginForm
         <VCardText>
           <VForm @submit.prevent="() => { submit() }">
             <VRow>
-              <!-- email -->
+              <VCol cols="12">
+                <AppTextField
+                  v-model="form.first_name"
+                  :label="$t('first-name')"
+                />
+              </VCol>
+              <VCol cols="12">
+                <AppTextField
+                  v-model="form.last_name"
+                  :label="$t('last-name')"
+                />
+              </VCol>
               <VCol cols="12">
                 <AppTextField
                   v-model="form.email"
-                  autofocus
-                  :label="$t('login')"
-                  type="email"
-                  placeholder="johndoe@email.com"
+                  :label="$t('email')"
+                />
+              </VCol>
+              <VCol cols="12">
+                <AppTextField
+                  v-model="form.phone_number"
+                  :label="$t('phone-number')"
+                />
+              </VCol>
+              <VCol cols="12">
+                <AppSelect
+                  v-model="form.gender"
+                  :label="$t('gender')"
+                  :items="[
+                    { title: $t('female'), value: 'female' },
+                    { title: $t('male'), value: 'male' },
+                  ]"
+                  item-title="title"
+                  item-value="value"
+                  chips
                 />
               </VCol>
 
+              <VCol cols="12">
+                <AppTextField
+                  v-model="form.age"
+                  :label="$t('age')"
+                  type="number"
+                />
+              </VCol>
+              <VCol cols="12">
+                <AppSelect
+                  v-model="form.info_type"
+                  :label="$t('info-type')"
+                  :items="[
+                    { title: $t('trainee'), value: 'trainee' },
+                    { title: $t('trainer'), value: 'trainer' },
+                  ]"
+                  item-title="title"
+                  item-value="value"
+                  chips
+                />
+              </VCol>
               <!-- password -->
               <VCol cols="12">
                 <AppTextField
                   v-model="form.password"
-                  :label="$t('login')"
+                  :label="$t('password')"
                   placeholder="············"
                   :type="isPasswordVisible ? 'text' : 'password'"
                   :append-inner-icon="isPasswordVisible ? 'tabler-eye-off' : 'tabler-eye'"
@@ -107,11 +154,9 @@ const { submit } = loginForm
               <VCol>
                 <VBtn
                   block
-                  :loading="loading"
-                  :disabled="loading"
                   @click="submit"
                 >
-                  {{ $t('login') }}
+                  Sign up
                 </VBtn>
               </VCol>
 
@@ -120,13 +165,13 @@ const { submit } = loginForm
                 cols="12"
                 class="text-center text-base"
               >
-                <span>New on our platform?</span>
+                <span>Already have an account?</span>
 
                 <RouterLink
                   class="text-primary ms-2"
-                  to="sign-up"
+                  to="/login"
                 >
-                  Create an account
+                  Login
                 </RouterLink>
               </VCol>
             </VRow>

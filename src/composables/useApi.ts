@@ -1,5 +1,6 @@
 import { createFetch } from '@vueuse/core'
 import { destr } from 'destr'
+import { useToast } from 'vue-toastification'
 
 export const useApi = createFetch({
   baseUrl: import.meta.env.VITE_API_BASE_URL || '/api',
@@ -38,6 +39,18 @@ export const useApi = createFetch({
       }
 
       return { data: parsedData, response }
+    },
+    onFetchError(ctx) {
+      const { data, response } = ctx
+
+      // if (response?.status === 401)
+      //   window.location.href = url(import.meta.env.VITE_LOGIN_URL, { to: `${window.location.origin}/login` })
+
+      const parsedData = destr<{ message: string }>(data)
+      if (parsedData?.message)
+        useToast().error(parsedData.message)
+
+      return ctx
     },
   },
 })

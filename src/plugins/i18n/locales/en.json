@@ -22,5 +22,16 @@
   "search": "Search",
   "my-plans": "My Plans",
   "trainers": "Trainers",
-  "history": "History"
+  "history": "History",
+  "first-name": "First Name",
+  "last-name": "Last Name",
+  "gender": "Gender",
+  "phone-number": "Phone Number",
+  "info-type": "Info Type",
+  "password": "Password",
+  "age": "Age",
+  "male": "Male",
+  "female": "Female",
+  "trainee": "Trainee",
+  "trainer": "Trainer"
 }
