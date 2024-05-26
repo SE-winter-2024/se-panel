@@ -39,5 +39,19 @@
   "achievements": "دستاوردها",
   "sports": "ورزش‌ها",
   "education": "تحصیلات",
-  "logout": "خروج"
+  "logout": "خروج",
+  "request-ask": "درخواست برنامه از {0}",
+  "monday": "دوشنبه",
+  "tuesday": "سه شنبه",
+  "wednesday": "چهارشنبه",
+  "thursday": "پنج نشبه",
+  "friday": "جمعه",
+  "saturday": "شنبه",
+  "sunday": "یکشنبه",
+  "description": "توضیحات",
+  "send": "ارسال",
+  "active-days": "روزهای فعال",
+  "made-with": "ساخته شده با",
+  "by": "توسط",
+  "sbu-students": "دانشجویان بهشتی"
 }

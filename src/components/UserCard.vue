@@ -1,12 +1,16 @@
 <script setup lang="ts">
+import { useRequestForm } from '@/stores/forms/request-form'
+
+defineProps<Props>()
+
+const { openDialog } = useRequestForm()
+
 interface Props {
   user: {
     name: string
     id: number
   }
 }
-
-defineProps<Props>()
 </script>
 
 <template>
@@ -30,6 +34,7 @@ defineProps<Props>()
           <VBtn
             block
             variant="outlined"
+            @click="() => openDialog(user.id, `${user.first_name} ${user.last_name}`)"
           >
             {{ $t('request') }}
           </VBtn>

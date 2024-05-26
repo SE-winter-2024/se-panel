@@ -39,5 +39,19 @@
   "achievements": "Achievements",
   "sports": "Sports",
   "education": "Education",
-  "logout": "Logout"
+  "logout": "Logout",
+  "request-ask": "Ask program from {0}",
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+  "friday": "Friday",
+  "saturday": "Saturday",
+  "sunday": "Sunday",
+  "description": "Description",
+  "send": "Send",
+  "active-days": "Activte Days",
+  "made-with": "Made with",
+  "by": "By",
+  "sbu-students": "SBU Students"
 }

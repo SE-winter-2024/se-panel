@@ -4,19 +4,21 @@
     <span class="d-flex align-center">
       &copy;
       {{ new Date().getFullYear() }}
-      Made With
+      {{ $t('made-with') }}
       <VIcon
         icon="tabler-heart"
         color="error"
         size="1.25rem"
         class="mx-1"
       />
-      By <a
+      {{ $t('by') }} <a
         href="https://sbu.ac.ir"
         target="_blank"
         rel="noopener noreferrer"
         class="text-primary ms-1"
-      >SBU Students</a>
+      >
+        {{ $t('sbu-students') }}
+      </a>
     </span>
   </div>
 </template>

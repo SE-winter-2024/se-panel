@@ -4,6 +4,7 @@ import ScrollToTop from '@core/components/ScrollToTop.vue'
 import initCore from '@core/initCore'
 import { initConfigStore, useConfigStore } from '@core/stores/config'
 import { hexToRgb } from '@layouts/utils'
+import { useDialogStore } from './stores/dialog'
 
 const { global } = useTheme()
 
@@ -12,6 +13,9 @@ initCore()
 initConfigStore()
 
 const configStore = useConfigStore()
+
+const { isOpen: isOpenDialog, width, component: dialogComponent } = storeToRefs(useDialogStore())
+const { closeDialog } = useDialogStore()
 </script>
 
 <template>
@@ -19,6 +23,14 @@ const configStore = useConfigStore()
     <!-- ℹ️ This is required to set the background color of active nav link based on currently active global theme's primary -->
     <VApp :style="`--v-global-theme-primary: ${hexToRgb(global.current.value.colors.primary)}`">
       <RouterView />
+
+      <VDialog
+        v-model="isOpenDialog"
+        :width="width"
+      >
+        <DialogCloseBtn @click="closeDialog" />
+        <Component :is="dialogComponent" />
+      </VDialog>
 
       <ScrollToTop />
     </VApp>
