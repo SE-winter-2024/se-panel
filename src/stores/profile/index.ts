@@ -38,6 +38,9 @@ export const useProfileStore = defineStore('profile-store', () => {
 
       profileChange.medicalHistory.value = profile.value.MedicalHistory
       profileChange.sports.value = profile.value.Sports
+      profileChange.Achievements.value = profile.value.Achievements
+      profileChange.Sport.value = profile.value.Sport
+      profileChange.Education.value = profile.value.Education
     }
 
     loading.value = false
