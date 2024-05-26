@@ -14,23 +14,27 @@ defineProps<Props>()
     <VImg src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3pef1Pll8TzPHdfiCMfV8zbilupZJUQJdX34CSqvAiA&s" />
     <VCardText>
       <div class="text-center text-lg">
-        {{ user.name }}
+        {{ user.first_name }} {{ user.last_name }}
       </div>
-      <div class="d-flex mt-4">
-        <VBtn
-          variant="outlined"
-          class="me-1"
-          :to="`/profile/${user.id}`"
-        >
-          {{ $t('view-profile') }}
-        </VBtn>
-        <VBtn
-          variant="outlined"
-          class="ms-1"
-        >
-          {{ $t('view-program') }}
-        </VBtn>
-      </div>
+      <VRow class="mt-4">
+        <VCol>
+          <VBtn
+            block
+            variant="outlined"
+            :to="`/profile/${user.id}`"
+          >
+            {{ $t('profile') }}
+          </VBtn>
+        </VCol>
+        <VCol>
+          <VBtn
+            block
+            variant="outlined"
+          >
+            {{ $t('request') }}
+          </VBtn>
+        </VCol>
+      </VRow>
     </VCardText>
   </VCard>
 </template>

@@ -18,7 +18,7 @@ const users = [
           v-for="user in users"
           :key="user.id"
         >
-          <VCol cols="3">
+          <VCol cols="4">
             <UserCard :user="user" />
           </VCol>
         </template>

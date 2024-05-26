@@ -1,6 +1,6 @@
 {
-  "view-profile": "View Profile",
-  "view-program": "View Program",
+  "profile": "Profile",
+  "reuqest": "Request",
   "chat": "Chat",
   "requests": "Requests",
   "trainees": "Trainees",
@@ -38,5 +38,6 @@
   "sport-history": "Sport History",
   "achievements": "Achievements",
   "sports": "Sports",
-  "education": "Education"
+  "education": "Education",
+  "logout": "Logout"
 }

@@ -54,7 +54,7 @@ authStore.fetch()
               />
             </template>
 
-            <VListItemTitle>Logout</VListItemTitle>
+            <VListItemTitle>{{ $t('logout') }}</VListItemTitle>
           </VListItem>
         </VList>
       </VMenu>

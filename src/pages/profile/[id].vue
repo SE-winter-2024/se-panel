@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import Avatar2 from '@images/avatars/avatar-2.png'
 import { useProfileStore } from '@/stores/profile'
+import { useAuthStore } from '@/stores/auth'
 import { router } from '@/plugins/1.router'
 
 const id = router.currentRoute.value.params.id
@@ -12,6 +13,14 @@ const { fetch, setId, submitChange } = profileStore
 setId(Number(id))
 
 fetch()
+
+const authStore = useAuthStore()
+const { user: authUser } = storeToRefs(authStore)
+
+watch(router.currentRoute, () => {
+  setId(Number(router.currentRoute.value.params.id))
+  fetch()
+})
 </script>
 
 <template>
@@ -119,7 +128,10 @@ fetch()
 
           <div class="d-flex justify-center mt-8">
             <div class="d-flex">
-              <VBtn class="me-2">
+              <VBtn
+                v-if="authUser.ID === user.ID"
+                class="me-2"
+              >
                 {{ $t('edit') }}
               </VBtn>
               <VBtn
@@ -142,7 +154,7 @@ fetch()
               <div class="text-h3">
                 {{ $t('medical-history') }}
               </div>
-              <div>
+              <div v-if="authUser.ID === user.ID">
                 <VIcon
                   v-if="!profileChange.medicalHistory.edit"
                   icon="tabler-edit"
@@ -190,7 +202,7 @@ fetch()
               <div class="text-h3">
                 {{ $t('sport-history') }}
               </div>
-              <div>
+              <div v-if="authUser.ID === user.ID">
                 <VIcon
                   v-if="!profileChange.sports.edit"
                   icon="tabler-edit"
@@ -239,7 +251,7 @@ fetch()
               <div class="text-h3">
                 {{ $t('sports') }}
               </div>
-              <div>
+              <div v-if="authUser.ID === user.ID">
                 <VIcon
                   v-if="!profileChange.Sport.edit"
                   icon="tabler-edit"
@@ -287,7 +299,7 @@ fetch()
               <div class="text-h3">
                 {{ $t('achievements') }}
               </div>
-              <div>
+              <div v-if="authUser.ID === user.ID">
                 <VIcon
                   v-if="!profileChange.Achievements.edit"
                   icon="tabler-edit"
@@ -335,7 +347,7 @@ fetch()
               <div class="text-h3">
                 {{ $t('education') }}
               </div>
-              <div>
+              <div v-if="authUser.ID === user.ID">
                 <VIcon
                   v-if="!profileChange.Education.edit"
                   icon="tabler-edit"
