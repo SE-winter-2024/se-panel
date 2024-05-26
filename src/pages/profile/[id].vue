@@ -6,8 +6,8 @@ import { router } from '@/plugins/1.router'
 const id = router.currentRoute.value.params.id
 
 const profileStore = useProfileStore()
-const { user, profile, currentType, traineeChange } = storeToRefs(profileStore)
-const { fetch, setId } = profileStore
+const { user, profile, currentType, profileChange } = storeToRefs(profileStore)
+const { fetch, setId, submitChange } = profileStore
 
 setId(Number(id))
 
@@ -144,10 +144,10 @@ fetch()
               </div>
               <div>
                 <VIcon
-                  v-if="!traineeChange.medicalHistory.edit"
+                  v-if="!profileChange.medicalHistory.edit"
                   icon="tabler-edit"
                   class="cursor-pointer"
-                  @click="() => traineeChange.medicalHistory.edit = true"
+                  @click="() => profileChange.medicalHistory.edit = true"
                 />
                 <div
                   v-else
@@ -157,12 +157,13 @@ fetch()
                     icon="tabler-check"
                     class="cursor-pointer me-2"
                     color="success"
+                    @click="() => submitChange('medicalHistory')"
                   />
                   <VIcon
                     icon="tabler-x"
                     class="cursor-pointer"
                     color="error"
-                    @click="() => traineeChange.medicalHistory.edit = false"
+                    @click="() => profileChange.medicalHistory.edit = false"
                   />
                 </div>
               </div>
@@ -170,12 +171,12 @@ fetch()
           </VCardText>
 
           <VCardText>
-            <div v-if="!traineeChange.medicalHistory.edit">
+            <div v-if="!profileChange.medicalHistory.edit">
               {{ profile.MedicalHistory }}
             </div>
             <div v-else>
               <VTextarea
-                v-model="traineeChange.medicalHistory.value"
+                v-model="profileChange.medicalHistory.value"
                 outlined
                 rows="5"
               />
@@ -191,10 +192,10 @@ fetch()
               </div>
               <div>
                 <VIcon
-                  v-if="!traineeChange.sports.edit"
+                  v-if="!profileChange.sports.edit"
                   icon="tabler-edit"
                   class="cursor-pointer"
-                  @click="() => traineeChange.sports.edit = true"
+                  @click="() => profileChange.sports.edit = true"
                 />
                 <div
                   v-else
@@ -204,12 +205,13 @@ fetch()
                     icon="tabler-check"
                     class="cursor-pointer me-2"
                     color="success"
+                    @click="() => submitChange('sports')"
                   />
                   <VIcon
                     icon="tabler-x"
                     class="cursor-pointer"
                     color="error"
-                    @click="() => traineeChange.sports.edit = false"
+                    @click="() => profileChange.sports.edit = false"
                   />
                 </div>
               </div>
@@ -217,12 +219,157 @@ fetch()
           </VCardText>
 
           <VCardText>
-            <div v-if="!traineeChange.sports.edit">
+            <div v-if="!profileChange.sports.edit">
               {{ profile.Sports }}
             </div>
             <div v-else>
               <VTextarea
-                v-model="traineeChange.sports.value"
+                v-model="profileChange.sports.value"
+                outlined
+                rows="5"
+              />
+            </div>
+          </VCardText>
+        </VCard>
+      </template>
+      <template v-if="user.InfoType === 'trainer'">
+        <VCard class="mb-4">
+          <VCardText>
+            <div class="d-flex justify-space-between align-center">
+              <div class="text-h3">
+                {{ $t('sports') }}
+              </div>
+              <div>
+                <VIcon
+                  v-if="!profileChange.Sport.edit"
+                  icon="tabler-edit"
+                  class="cursor-pointer"
+                  @click="() => profileChange.Sport.edit = true"
+                />
+                <div
+                  v-else
+                  class="d-flex"
+                >
+                  <VIcon
+                    icon="tabler-check"
+                    class="cursor-pointer me-2"
+                    color="success"
+                    @click="() => submitChange('Sport')"
+                  />
+                  <VIcon
+                    icon="tabler-x"
+                    class="cursor-pointer"
+                    color="error"
+                    @click="() => profileChange.Sport.edit = false"
+                  />
+                </div>
+              </div>
+            </div>
+          </VCardText>
+
+          <VCardText>
+            <div v-if="!profileChange.Sport.edit">
+              {{ profile.Sport }}
+            </div>
+            <div v-else>
+              <VTextarea
+                v-model="profileChange.Sport.value"
+                outlined
+                rows="5"
+              />
+            </div>
+          </VCardText>
+        </VCard>
+
+        <VCard class="mb-4">
+          <VCardText>
+            <div class="d-flex justify-space-between align-center">
+              <div class="text-h3">
+                {{ $t('achievements') }}
+              </div>
+              <div>
+                <VIcon
+                  v-if="!profileChange.Achievements.edit"
+                  icon="tabler-edit"
+                  class="cursor-pointer"
+                  @click="() => profileChange.Achievements.edit = true"
+                />
+                <div
+                  v-else
+                  class="d-flex"
+                >
+                  <VIcon
+                    icon="tabler-check"
+                    class="cursor-pointer me-2"
+                    color="success"
+                    @click="() => submitChange('Achievements')"
+                  />
+                  <VIcon
+                    icon="tabler-x"
+                    class="cursor-pointer"
+                    color="error"
+                    @click="() => profileChange.Achievements.edit = false"
+                  />
+                </div>
+              </div>
+            </div>
+          </VCardText>
+
+          <VCardText>
+            <div v-if="!profileChange.Achievements.edit">
+              {{ profile.Achievements }}
+            </div>
+            <div v-else>
+              <VTextarea
+                v-model="profileChange.Achievements.value"
+                outlined
+                rows="5"
+              />
+            </div>
+          </VCardText>
+        </VCard>
+
+        <VCard class="mb-4">
+          <VCardText>
+            <div class="d-flex justify-space-between align-center">
+              <div class="text-h3">
+                {{ $t('education') }}
+              </div>
+              <div>
+                <VIcon
+                  v-if="!profileChange.Education.edit"
+                  icon="tabler-edit"
+                  class="cursor-pointer"
+                  @click="() => profileChange.Education.edit = true"
+                />
+                <div
+                  v-else
+                  class="d-flex"
+                >
+                  <VIcon
+                    icon="tabler-check"
+                    class="cursor-pointer me-2"
+                    color="success"
+                    @click="() => submitChange('Education')"
+                  />
+                  <VIcon
+                    icon="tabler-x"
+                    class="cursor-pointer"
+                    color="error"
+                    @click="() => profileChange.Education.edit = false"
+                  />
+                </div>
+              </div>
+            </div>
+          </VCardText>
+
+          <VCardText>
+            <div v-if="!profileChange.Education.edit">
+              {{ profile.Education }}
+            </div>
+            <div v-else>
+              <VTextarea
+                v-model="profileChange.Education.value"
                 outlined
                 rows="5"
               />

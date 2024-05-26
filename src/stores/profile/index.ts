@@ -4,12 +4,24 @@ export const useProfileStore = defineStore('profile-store', () => {
   const currentId = ref(0)
   const loading = ref(false)
 
-  const traineeChange = reactive({
+  const profileChange = reactive({
     medicalHistory: {
       edit: false,
       value: '',
     },
     sports: {
+      edit: false,
+      value: '',
+    },
+    Achievements: {
+      edit: false,
+      value: '',
+    },
+    Sport: {
+      edit: false,
+      value: '',
+    },
+    Education: {
       edit: false,
       value: '',
     },
@@ -24,11 +36,20 @@ export const useProfileStore = defineStore('profile-store', () => {
       user.value = res.data.value?.user
       profile.value = res.data.value?.profile
 
-      traineeChange.medicalHistory.value = profile.value.MedicalHistory
-      traineeChange.sports.value = profile.value.Sports
+      profileChange.medicalHistory.value = profile.value.MedicalHistory
+      profileChange.sports.value = profile.value.Sports
     }
 
     loading.value = false
+  }
+
+  const submitChange = async (key: string) => {
+    const res = await useApi('/user/profile').put({ [key]: profileChange[key].value })
+
+    if (res.statusCode.value === 200) {
+      fetch()
+      profileChange[key].edit = false
+    }
   }
 
   const setId = (id: number) => {
@@ -41,6 +62,7 @@ export const useProfileStore = defineStore('profile-store', () => {
     setId,
     fetch,
     loading,
-    traineeChange,
+    profileChange,
+    submitChange,
   }
 })

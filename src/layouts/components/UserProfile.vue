@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/auth'
-import { useProfileStore } from '@/stores/profile'
 
 const authStore = useAuthStore()
 const { user } = storeToRefs(authStore)
@@ -30,7 +29,7 @@ authStore.fetch()
         <VList>
           <VListItem
             link
-            :to="`profile/${user.id}`"
+            :to="`/profile/${user.ID}`"
           >
             <template #prepend>
               <VIcon

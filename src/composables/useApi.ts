@@ -1,3 +1,4 @@
+import { TOKEN_NAME } from '@/types'
 import { createFetch } from '@vueuse/core'
 import { destr } from 'destr'
 import { useToast } from 'vue-toastification'
@@ -13,12 +14,12 @@ export const useApi = createFetch({
   options: {
     refetch: true,
     async beforeFetch({ options }) {
-      const accessToken = localStorage.getItem('access-token')
+      const accessToken = localStorage.getItem(TOKEN_NAME)
 
       if (accessToken) {
         options.headers = {
           ...options.headers,
-          Authorization: `Bearer ${accessToken}`,
+          Authorization: `${accessToken}`,
 
         }
       }

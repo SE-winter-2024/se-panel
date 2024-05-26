@@ -33,5 +33,10 @@
   "male": "Male",
   "female": "Female",
   "trainee": "Trainee",
-  "trainer": "Trainer"
+  "trainer": "Trainer",
+  "medical-history": "Medical History",
+  "sport-history": "Sport History",
+  "achievements": "Achievements",
+  "sports": "Sports",
+  "education": "Education"
 }

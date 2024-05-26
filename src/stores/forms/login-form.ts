@@ -17,8 +17,8 @@ export const useLoginForm = defineStore('login-form', () => {
     const res = await useApi<{ token: string; user: User }>('/user/login').post(form.value)
 
     if (res.statusCode.value === 200) {
-      localStorage.setItem(TOKEN_NAME, res.data.value?.token ?? '')
-      localStorage.setItem('fit-user', JSON.stringify(res.data.value?.user) ?? '')
+      localStorage.setItem(TOKEN_NAME, res.data.value?.jwt ?? '')
+      localStorage.setItem('fit-user', JSON.stringify(res.data.value) ?? '')
       router.push('/')
     }
 
