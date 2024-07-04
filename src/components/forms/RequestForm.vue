@@ -2,7 +2,7 @@
 import { useRequestForm } from '@/stores/forms/request-form'
 
 const requestForm = useRequestForm()
-const { trainerName, form } = storeToRefs(requestForm)
+const { trainerName, form, loading } = storeToRefs(requestForm)
 const { submit } = requestForm
 
 const days = [
@@ -44,7 +44,12 @@ const days = [
           </div>
         </VCol>
         <VCol cols="12">
-          <VBtn block @click="() => submit()">
+          <VBtn
+            block
+            :loading
+            :disabled="loading"
+            @click="() => submit()"
+          >
             {{ $t('send') }}
           </VBtn>
         </VCol>

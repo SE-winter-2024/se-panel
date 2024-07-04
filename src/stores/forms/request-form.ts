@@ -9,8 +9,11 @@ export const useRequestForm = defineStore('request-form', () => {
   const form = ref(emptyForm())
   const trainerId = ref(0)
   const trainerName = ref('')
+  const loading = ref(false)
 
   const openDialog = (id: number, name: string) => {
+    form.value = emptyForm()
+
     trainerId.value = id
     trainerName.value = name
 
@@ -18,11 +21,18 @@ export const useRequestForm = defineStore('request-form', () => {
   }
 
   const submit = async () => {
-    useApi('trainee/request').post({
+    loading.value = true
+
+    const res = await useApi('trainee/request').post({
       trainerID: trainerId.value,
       description: form.value.description,
       active_days: form.value.activeDays,
     })
+
+    if (res.statusCode.value === 200)
+      useDialogStore().closeDialog()
+
+    loading.value = false
   }
 
   return {
@@ -30,5 +40,6 @@ export const useRequestForm = defineStore('request-form', () => {
     openDialog,
     trainerName,
     submit,
+    loading,
   }
 })

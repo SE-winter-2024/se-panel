@@ -1,7 +1,7 @@
-import { TOKEN_NAME } from '@/types'
 import { createFetch } from '@vueuse/core'
 import { destr } from 'destr'
 import { useToast } from 'vue-toastification'
+import { TOKEN_NAME } from '@/types'
 
 export const useApi = createFetch({
   baseUrl: import.meta.env.VITE_API_BASE_URL || '/api',
@@ -15,11 +15,13 @@ export const useApi = createFetch({
     refetch: true,
     async beforeFetch({ options }) {
       const accessToken = localStorage.getItem(TOKEN_NAME)
+      const user = JSON.parse(localStorage.getItem('fit-user') ?? '{}')
 
       if (accessToken) {
         options.headers = {
           ...options.headers,
-          Authorization: `${accessToken}`,
+          'Authorization': `${accessToken}`,
+          'X-User-ID': user.ID,
 
         }
       }

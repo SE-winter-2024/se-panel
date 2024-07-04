@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { VDataTable } from 'vuetify/labs/VDataTable'
 import { VSkeletonLoader } from 'vuetify/labs/VSkeletonLoader'
-import Avatar3 from '@images/avatars/avatar-3.png'
-import Avatar4 from '@images/avatars/avatar-4.png'
+import { useRequestsStore } from '@/stores/requests/trainer'
 
 const { t } = useI18n()
 
@@ -14,12 +13,11 @@ const headers = [
   { title: t('actions'), key: 'actions', align: 'left' },
 ]
 
-const items = ref([
-  { trainee: { name: 'mohammad', avatar: Avatar3 }, date: '2024-2-3', payment: 120, status: 'pending' },
-  { trainee: { name: 'Reza', avatar: Avatar4 }, date: '2024-1-19', payment: 80, status: 'approved' },
-])
+const requestsStore = useRequestsStore()
+const { requests, loading } = storeToRefs(requestsStore)
+const { fetch } = requestsStore
 
-const loading = ref(false)
+fetch()
 
 const getColor = (status: string) => {
   if (status === 'pending')
@@ -41,7 +39,7 @@ const getColor = (status: string) => {
       <VDataTable
         :headers="headers"
         :loading="loading"
-        :items="items"
+        :items="requests"
       >
         <template #loading>
           <VSkeletonLoader type="table-row@6" />

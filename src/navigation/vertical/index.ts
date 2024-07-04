@@ -21,26 +21,46 @@ export default computed(() => {
     ]
   }
 
+  if (user.info_type === 'trainee') {
+    return [
+      {
+        title: 'my-plans',
+        to: { name: 'trainee-my-plans' },
+        icon: { icon: 'tabler-calendar-event' },
+      },
+      {
+        title: 'trainers',
+        to: { name: 'trainee-trainers' },
+        icon: { icon: 'tabler-stretching' },
+      },
+      {
+        title: 'history',
+        to: { name: 'trainee-history' },
+        icon: { icon: 'tabler-checklist' },
+      },
+      {
+        title: 'chat',
+        to: { name: 'chat' },
+        icon: { icon: 'tabler-message' },
+      },
+    ]
+  }
+
   return [
     {
-      title: 'my-plans',
-      to: { name: 'trainee-my-plans' },
-      icon: { icon: 'tabler-calendar-event' },
+      title: 'users',
+      to: { name: 'admin-users' },
+      icon: { icon: 'tabler-users' },
     },
     {
-      title: 'trainers',
-      to: { name: 'trainee-trainers' },
-      icon: { icon: 'tabler-stretching' },
-    },
-    {
-      title: 'history',
-      to: { name: 'trainee-history' },
-      icon: { icon: 'tabler-checklist' },
-    },
-    {
-      title: 'chat',
+      title: 'reports',
       to: { name: 'chat' },
-      icon: { icon: 'tabler-message' },
+      icon: { icon: 'tabler-report' },
+    },
+    {
+      title: 'sports',
+      to: { name: 'chat' },
+      icon: { icon: 'tabler-ball-american-football' },
     },
   ]
 })
