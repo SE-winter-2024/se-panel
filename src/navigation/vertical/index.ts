@@ -59,7 +59,7 @@ export default computed(() => {
     },
     {
       title: 'sports',
-      to: { name: 'chat' },
+      to: { name: 'admin-sports' },
       icon: { icon: 'tabler-ball-american-football' },
     },
   ]

@@ -1,8 +1,10 @@
 import type { DefineComponent } from 'vue'
 import RequestForm from '@/components/forms/RequestForm.vue'
+import SportStoreForm from '@/components/forms/SportStoreForm.vue'
 
 const components = {
   'request-form': RequestForm,
+  'sport-store-form': SportStoreForm,
 }
 
 export const useDialogStore = defineStore('dialog', () => {
